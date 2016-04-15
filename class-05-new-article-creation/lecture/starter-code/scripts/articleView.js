@@ -88,6 +88,7 @@ articleView.create = function() {
     publishedOn: $('#article-published:checked').length ? new Date() : null
   });
   // Clear out the #articles element, so we can put in the updated preview
+  $('#article-preview').empty();
   // DONE: Instantiate an article based on what's in the form fields:
 
   // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
