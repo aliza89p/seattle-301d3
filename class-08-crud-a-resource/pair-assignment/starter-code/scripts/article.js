@@ -61,7 +61,7 @@
     webDB.execute(
       [
         {
-          'sql': '...;',
+          'sql': 'UPDATE articles SET ()...;',
           'data': [this.title, this.author, this.authorUrl, this.category, this.publishedOn, this.body, this.id]
         }
       ],
@@ -89,9 +89,11 @@
   // If the DB has data already, we'll load up the data (by descended published order), and then hand off control to the View.
   // If the DB is empty, we need to retrieve the JSON and process it.
   Article.fetchAll = function(next) {
-    webDB.execute('...', function(rows) { // TODO: fill these quotes to 'select' our table.
+    webDB.execute('SELECT * FROM articles', function(rows) { // TODO: fill these quotes to 'select' our table.
       if (rows.length) {
         // TODO:
+        Article.loadAll(rows);
+        next();
         // 1 - Use Article.loadAll to instanitate these rows,
         // 2 - Pass control to the view by calling the next function that was passed in to Article.fetchAll
 
@@ -102,11 +104,15 @@
             var article = new Article(obj); // This will instantiate an article instance based on each article object from our JSON.
             // TODO:
             // 1 - 'insert' the newly-instantiated article in the DB: (hint: what can we call on each 'article' instance?).
+            Article.all.push(article);
+            article.insertRecord();
 
           });
           // Now get ALL the records out the DB, with their database IDs:
-          webDB.execute('', function(rows) { // TODO: select our now full table
+          webDB.execute('SELECT * FROM articles', function(rows) { // TODO: select our now full table
             // TODO:
+            Article.loadAll(rows);
+            next();
             // 1 - Use Article.loadAll to instanitate these rows,
             // 2 - Pass control to the view by calling the next function that was passed in to Article.fetchAll
 
