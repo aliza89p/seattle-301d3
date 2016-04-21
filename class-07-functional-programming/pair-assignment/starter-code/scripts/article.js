@@ -41,6 +41,7 @@
   // This function will retrieve the data from either a local or remote source,
   // and process it, then hand off control to the View.
 
+<<<<<<< HEAD
   // TODO: Refactor the Article.fetchAll method, and provide it with a parameter of a callback
   // function (for now just a placeholder, but to be referenced at call-time as a "view" function)
   // that will execute once the loading of articles is done. We do this because we might want
@@ -74,6 +75,41 @@
       articleView.initIndexPage();
     });
   };
+=======
+// TODO: Refactoring the Article.fetchAll method, it now accepts a parameter called 'next'
+// ('next' is just a placeholder, but when referenced at the time fetchAll is called will be a 'view' function)
+// that will execute once the loading of articles is done. We do this because we might want
+// to call other view functions, and not just initIndexPage()
+// Now instead of calling articleView.initIndexPage(), we can call the parameter instead.
+Article.fetchAll = function(next) {
+  if (localStorage.hackerIpsum) {
+    $.ajax({
+      type: 'HEAD',
+      url: '/data/hackerIpsum.json',
+      success: function(data, message, xhr) {
+        var eTag = xhr.getResponseHeader('eTag');
+        if (!localStorage.eTag || eTag !== localStorage.eTag) {
+          localStorage.eTag = eTag;
+          Article.getAll(); //TODO: pass 'next' into getAll();
+        } else {
+          Article.loadAll(JSON.parse(localStorage.hackerIpsum));
+          articleView.initIndexPage(); //TODO: Replace me with 'next' and call next instead.
+        }
+      }
+    });
+  } else {
+    Article.getAll(); //TODO: pass 'next' into getAll();
+  }
+};
+
+Article.getAll = function() { //TODO: getAll now accepts 'next'
+  $.getJSON('/data/hackerIpsum.json', function(responseData) {
+    Article.loadAll(responseData);
+    localStorage.hackerIpsum = JSON.stringify(responseData);
+    articleView.initIndexPage(); //TODO: Replace me with 'next' and call next instead.
+  });
+};
+>>>>>>> ccfaf2f30f3659a9cdf074a9ef9387e519ad25bd
 
   // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = function() {
