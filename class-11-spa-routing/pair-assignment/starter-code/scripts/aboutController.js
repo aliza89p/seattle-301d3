@@ -6,6 +6,7 @@
 
     //don't need to create a table since not doing anything. Just the show about page.
     $('#articles').hide();
+    $('#admin').hide();
     $('#about').show();
 
   };
