@@ -7,7 +7,7 @@
     // DONE: How would you like to fetch your repos? Someone say AJAX!?
     //  Don't forget to call the callback!
     $.ajax({
-      url: 'https://api.github.com/users/maschigokae/repos' +
+      url: 'https://api.github.com/users/aliza89p/repos' +
       '?per_page=10' +
       '&sort=updated',
       type: 'GET',
