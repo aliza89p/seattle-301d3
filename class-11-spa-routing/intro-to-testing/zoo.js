@@ -45,14 +45,23 @@ expect(
 
   // TODO:
   // Assign one of your favorite animals to nextAnimal using Math.random() to pick
-
+var pickAnumber;
   // your code goes here
+pickAnumber = Math.floor(Math.random() * favoriteAnimals.length);
+nextAnimal = favoriteAnimals[pickAnumber];
+console.log(nextAnimal);
 
   // TODO:
   // Write a test! Use the `expect()` function to ensure that an element in
   //  the favoriteAnimals array was assigned to nextAnimal. Remember to:
   //  pass in your expression, and write a failure and a success message.
-
+expect (
+  favoriteAnimals.some(function(animal) {
+    return animal === nextAnimal;
+  }),
+  'no animal selected! Zoo has now closed',
+  'Hooray! We get to see the ' + nextAnimal + ' next!'
+);
 
 
   /* ===================================================================
@@ -82,7 +91,7 @@ expect(
 
 
   expect(typeof(tooHungryDay) === 'number'), 'tooHungryDay should be a number but instead is type of ' + typeof(tooHungryDay),
-    'the lion appears to be too hungry after ' + tooHungryDay + ' days...');
+    'the lion appears to be too hungry after ' + tooHungryDay + ' days...';
 
   // TODO:
   // Write a test expecting that tooHungryDay falls within an acceptable answer
