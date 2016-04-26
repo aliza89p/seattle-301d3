@@ -34,7 +34,7 @@
       <li>
         <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
         <p>Description: {{description}}</p>
-        <p>Language: {{}}</p>
+        <p>Language: {{language}}</p>
         <p>Created: {{created_at}}</p>
         <p>Last updated: {{updated_at}}</p>
         {{#if watchers_count}}
@@ -124,9 +124,9 @@
     <script src="/scripts/view/articleView.js"></script>
     <script src="/scripts/view/repoView.js"></script>
     <!-- Controller files: -->
-    <script src="/scripts/controllers/articleController.js"></script>
-    <script src="/scripts/controllers/aboutController.js"></script>
-    <script src="/scripts/controllers/adminController.js"></script>
+    <script src="/scripts/controller/articleController.js"></script>
+    <script src="/scripts/controller/aboutController.js"></script>
+    <script src="/scripts/controller/adminController.js"></script>
 
     <script src="/scripts/routes.js"></script>
   </body>
