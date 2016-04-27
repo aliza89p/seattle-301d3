@@ -14,7 +14,7 @@
   var render = function(repo) {
     var repoTemplate = Handlebars.compile($('#repo-template').text());
     return repoTemplate(repo);
-  }
+  };
 
   // DONE: If all the data is loaded, we can prep the UI and render the repos.
   repoView.index = function() {
