@@ -5,7 +5,7 @@
   var render = function(article) {
     var template = Handlebars.compile($('#article-template').text());
 
-    article.daysAgo = parseInt((new Date() - new Date(article.publishedOn))/60/60/24/1000);
+    article.daysAgo = parseInt((new Date() - new Date(article.publishedOn)) / 60 / 60 / 24 / 1000);
     article.publishStatus = article.publishedOn ? 'published ' + article.daysAgo + ' days ago' : '(draft)';
     article.body = marked(article.body);
 
@@ -13,6 +13,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method is dynamically generating text values into the option field in the option-template id on the html page. To do this, we are using handlebars.js.
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -38,6 +39,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //This method will query through the filters ID with an event listener ('one' which runs one time). When the user changes the select element in the filters id, we run a callback function. This process is known as delegation. Inside the callback function, we define the resource variable which re-assigns an ID by replacing '-filter' with the selected value from the filter dropdown menu. We then invoke the page function which sets ups the routing to the correct query string. The query string is created by concatenation.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');

@@ -53,6 +53,5 @@
     }
   };
 
-
   module.articlesController = articlesController;
 })(window);
