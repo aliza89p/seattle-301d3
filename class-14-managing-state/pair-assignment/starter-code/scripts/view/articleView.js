@@ -130,7 +130,8 @@
     });
 
     articleView.populateFilters();
-    // COMMENT: What does this method do?  What is it's execution path?
+    // DONE: What does this method do?  What is it's execution path?
+    //This executes our articleView.handleFilters method which is defined above. 
     articleView.handleFilters();
 
     // DONE: Replace setTeasers with just the truncation logic, if needed:
