@@ -12,8 +12,8 @@
     return template(article);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
-  // This method is dynamically generating text values into the option field in the option-template id on the html page. To do this, we are using handlebars.js.
+  // DONE: What does this method do?  What is it's execution path?
+  // This method is dynamically generating text values into the option field in the option-template id on the html page. To do this, we are using handlebars.js.  This is called in articleView.index.
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -38,7 +38,7 @@
     });
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // DONE: What does this method do?  What is it's execution path?
   //This method will query through the filters ID with an event listener ('one' which runs one time). When the user changes the select element in the filters id, we run a callback function. This process is known as delegation. Inside the callback function, we define the resource variable which re-assigns an ID by replacing '-filter' with the selected value from the filter dropdown menu. We then invoke the page function (which is declared in route.js) and sets ups the routing to the correct query string. The query string is created by concatenation.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
@@ -119,8 +119,8 @@
     $('#article-json').val(JSON.stringify(article) + ',');
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
-  // This is a method from the articleView object which finds the "articles" ID from the index.html file. It then shows the content but hides all other siblings elements content.  The next part grabs all of the article elements from the "articles" id in the index.html page and removes them from the page.
+  // DONE: What does this method do?  What is it's execution path?
+  // This is a method from the articleView object which finds the "articles" ID from the index.html file. It then shows the content but hides all other siblings elements content.  The next part grabs all of the article elements from the "articles" id in the index.html page and removes them from the page. Lastly, it loops through all of the articles, compiles information using the render function which is located at the top of the page, and appends this information to the 'articles' ID on the index.html page.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
