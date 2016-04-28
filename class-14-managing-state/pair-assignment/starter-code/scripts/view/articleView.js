@@ -39,7 +39,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  //This method will query through the filters ID with an event listener ('one' which runs one time). When the user changes the select element in the filters id, we run a callback function. This process is known as delegation. Inside the callback function, we define the resource variable which re-assigns an ID by replacing '-filter' with the selected value from the filter dropdown menu. We then invoke the page function which sets ups the routing to the correct query string. The query string is created by concatenation.
+  //This method will query through the filters ID with an event listener ('one' which runs one time). When the user changes the select element in the filters id, we run a callback function. This process is known as delegation. Inside the callback function, we define the resource variable which re-assigns an ID by replacing '-filter' with the selected value from the filter dropdown menu. We then invoke the page function (which is declared in route.js) and sets ups the routing to the correct query string. The query string is created by concatenation.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');
@@ -120,6 +120,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This is a method from the articleView object which finds the "articles" ID from the index.html file. It then shows the content but hides all other siblings elements content.  The next part grabs all of the article elements from the "articles" id in the index.html page and removes them from the page.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 

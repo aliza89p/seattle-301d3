@@ -9,6 +9,9 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //Creating a loadById method on the articlesController object which takes in
+
+  //The var articleData is setting up a helper function. Article.findWhere allows us to run a webDB execute. ctx.articles is the object with all of our information. ctx.articles is only available inside this function.
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
@@ -39,6 +42,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //This is the first callback in the route to the index page which is located in routes.js. This also assigns a value to ctx.articles which can be used in the next callback.
   articlesController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.all;
