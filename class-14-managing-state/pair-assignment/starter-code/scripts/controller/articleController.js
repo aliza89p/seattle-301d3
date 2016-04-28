@@ -9,9 +9,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  //Creating a loadById method on the articlesController object which takes in
+  //This is the first callback in "page('/article/:id'...)" from routes.js. This creates a helper function called articleData which reassigns the value for ctx.articles. We can then use ctx.articles in the "next" callback function which is articlesController.index. Next we invoke the Article.findWhere function which uses webDB.execute function to fill in fields using SQL. This method can be found in article.js.
 
-  //The var articleData is setting up a helper function. Article.findWhere allows us to run a webDB execute. ctx.articles is the object with all of our information. ctx.articles is only available inside this function.
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
@@ -22,7 +21,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  //This is the first callback function in the page function that routes to /author/:authorName. Iniside the articlesController.loadByAuthor function an authorData helper is created, which we use to reassign the value for ctx.articles.  We can then use ctx.articles in the "next" callback function which is articlesController.index. 
+  //This is the first callback function in the page function that routes to /author/:authorName. Iniside the articlesController.loadByAuthor function an authorData helper is created, which we use to reassign the value for ctx.articles.  We can then use ctx.articles in the "next" callback function which is articlesController.index.
   articlesController.loadByAuthor = function(ctx, next) {
     var authorData = function(articlesByAuthor) {
       ctx.articles = articlesByAuthor;
@@ -33,7 +32,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  //This is the first callback function in the page function that routes to /category/:categoryName. Iniside the articlesController.loadByCategory function a categoryData helper is created, which we use to reassign the value for ctx.articles.  We can then use ctx.articles in the "next" callback function which is articlesController.index. 
+  //This is the first callback function in the page function that routes to /category/:categoryName. Iniside the articlesController.loadByCategory function a categoryData helper is created, which we use to reassign the value for ctx.articles.  We can then use ctx.articles in the "next" callback function which is articlesController.index.
   articlesController.loadByCategory = function(ctx, next) {
     var categoryData = function(articlesInCategory) {
       ctx.articles = articlesInCategory;
