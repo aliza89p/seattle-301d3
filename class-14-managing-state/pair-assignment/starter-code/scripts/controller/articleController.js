@@ -42,7 +42,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
-  //This is the first callback in the route to the index page which is located in routes.js. This also assigns a value to ctx.articles which can be used in the next callback.
+  //This is the first callback in the first page function which routes to the index page and is located in routes.js. This also assigns a value to ctx.articles which can be used in the next callback which is articlesController.index.
   articlesController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.all;
